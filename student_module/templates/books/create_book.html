@@ -1,0 +1,37 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Create Book{% endblock %}
+
+{% block content %}
+
+<h2>Create Book</h2>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br>
+    </div>
+
+    <div class="form-group">
+        <label for="author">Author:</label><br>
+        <input type="text" id="author" name="author" required><br>
+    </div>
+
+    <div class="form-group">
+        <label for="isbn">ISBN:</label><br>
+        <input type="text" id="isbn" name="isbn" maxlength="13" required><br>
+    </div>
+
+    <div class="form-group">
+        <label for="copies_available">Copies Available:</label><br>
+        <input type="number" id="copies_available" name="copies_available" min="1" required><br>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Save"  class="button" style="height: auto;  ">
+    </div>
+
+</form>
+
+<a href="{% url 'view_books' %}" class="button" style="margin: 10px;">Cancel</a>
+
+{% endblock %}

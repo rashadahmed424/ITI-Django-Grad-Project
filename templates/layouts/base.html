@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>
+            {% block title %} {% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <style>
+            .form-group label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+                color: #32348f;
+            }
+            .form-group input[type="text"],
+            .form-group input[type="number"],
+            .book-form input[type="number"],
+            .book-form input[type="file"],
+            .book-form textarea,
+            .book-form select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+            .form-group{
+                display: block;
+                margin: 10px;
+               
+
+            }
+            .card{
+                display: inline-block;
+                width:auto;
+                height: auto;
+                border: #32348f solid 3px;
+                border-radius: 10px;
+                padding: 5px;
+                margin: 5px;
+                text-align: center;
+            }
+
+
+         html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .main {
+            flex: 1; }
+            nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ccc;
+            padding: 10px;
+        
+        }
+        nav a:hover{
+            color:#32348f;
+            transform: scale(1.1);
+
+        }
+        .left a, .right a{
+            display: inline-block;
+            color: black;
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            
+        }
+        .left{
+            padding: 10px 20px;
+        }
+        .right a {
+            padding: 10px 40px;
+        }
+
+
+
+            .button {
+    display: inline-block;
+    width: 115px;
+    height: 25px;
+    background: #32348f;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+    transition: 0.7s ease;
+
+}
+    .button:hover{
+        transform: scale(1.1);
+        background-color: blueviolet;
+    }
+   
+    footer {
+        background: #32348f;
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }    
+ </style>
+    </head>
+    <body>
+        <nav>
+            <div class="left">
+                <a href="{% url 'admin_main' %}">Library</a>
+            </div>
+            <div class="right">
+                <a href="{% url 'view_books' %}">Books</a>
+               <a href="{% url 'get_all_users' %}">Students</a>
+                {% if request.user.is_authenticated %}
+                <form  method="post"  action="{% url 'logout' %}" style="display: inline-block;">
+                    {% csrf_token %}
+                    <input type="submit" value="Logout" style="background-color: #ccc; border: none; font-weight: bold;
+                    cursor: pointer;">
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+                <a href="{% url 'signup' %}">SignUp</a>
+              <a href="{% url 'contact' %}">Contact US</a>
+               <a href="{% url 'about' %}">About Us</a>
+           
+{#            <a href="{% url 'loginAsStudent' %}">Login as student</a>#}
+            </div>
+        </nav>
+
+        <div class='main'>
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        <footer>
+            <h3>Team: Rashad, Amr, Omar &copy;</h3>
+        </footer>
+    </body>
+</html>

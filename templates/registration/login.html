@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    {% if not request.user.is_authenticated %}
+        <h2 style="color:#32348f; text-align: center;">Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="button" style="height: auto;">Login</button>
+            </div>
+        </form>
+    {% else %}
+        <h2 style="color:#32348f; text-align: center;">You are already logged in</h2>
+        {% if next %}
+        <p style="display: inline-block; margin: 10px;">You must be logged in as Admin to view this page:
+        </p>
+        {% endif %}
+       <a href="{% url 'view_books' %}" class="button" style="margin-left: 20px;">Back</a>
+    {% endif %}
+  
+
+{% endblock %}

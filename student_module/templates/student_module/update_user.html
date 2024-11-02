@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Update User{% endblock %}
+
+{% block content %}
+<div style="margin: 10px;">
+<h2 style="text-align: center;color: #32348f;">Update User</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button" style="height: auto;">Update User</button>
+</form>
+<a href="{% url 'get_all_users' %}" class="button">Cancel</a>
+</div>
+{% endblock %}

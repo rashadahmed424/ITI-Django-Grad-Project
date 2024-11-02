@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Borrow Book{% endblock %}
+
+{% block content %}
+<div style="margin: 30px;">
+<h3>Book: {{ book.title }}</h3>
+<h3>Author: {{ book.author }}</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button" style="height: auto;">Borrow</button>
+</form>
+
+<a href="{% url 'view_books' %}" class="button">Cancel</a>
+</div>
+{% endblock %}

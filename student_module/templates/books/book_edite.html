@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Edit Book{% endblock %}
+{% block content %}
+<h2 style="color: #32348f; text-align: center;">Edit Book</h2>
+
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+        <div class="form-group">
+            <label for="id_title">Title</label>
+            {{ form.title }}
+        </div>
+        
+        <div class="form-group">
+            <label for="id_author">Author</label>
+            {{ form.author }}
+        </div>
+
+
+        
+        <div class="form-group" style="display: inline-block;">
+            <label for="id_total">ISBN</label>
+            {{ form.isbn }}
+        </div>
+        
+       
+
+        <div class="form-group" style="display: inline-block;">
+            <label for="id_available">Available</label>
+            {{ form.copies_available }}
+        </div>
+
+        <div class="form-group">
+        <input type="submit" value="Save"  class="button" style="height: auto;  ">
+        </div>
+    </form>
+    <a href="{% url 'book_details' book.id %}" class="button" style="margin: 10px;">Cancel</a>
+
+    
+
+{% endblock %}

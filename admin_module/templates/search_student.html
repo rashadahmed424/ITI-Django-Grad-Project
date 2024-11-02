@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Search Student{% endblock %}
+
+{% block content %}
+<h2 style="text-align: center;">Search for a Student</h2>
+
+<form method="GET" action="{% url 'search_student' %}" style="margin: 10px;">
+    <label for="student_id">Student ID</label>
+    <input type="number" name="student_id" id="student_name" placeholder="Enter student id" required>
+    <button type="submit" class="button" style="margin-left: 10px; height: auto;">Search</button>
+</form>
+
+
+{% endblock %}

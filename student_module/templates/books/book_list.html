@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Available Books{% endblock %}
+
+{% block content %}
+    <h2>Available Books</h2>
+    <ul>
+        {% for book in books %}
+            <li>
+                {{ book.title }} by {{ book.author }}
+                {% if not book.is_borrowed %}
+                    <a href="{% url 'borrow_book' book.id %}">Borrow</a>
+                {% else %}
+                    <span>Borrowed</span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

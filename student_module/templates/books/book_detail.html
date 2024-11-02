@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+{% block title %}{{ book.title }}{% endblock %}
+{% block content %}
+<div class="card" >
+    <div >
+      <h3>Title:     {{book.title}}</h3>
+      <h4>Author: {{ book.author }}</h4>
+      <h4>Available: {{ book.copies_available }}</h4>
+      <h4>Total Copies:  {{ book.isbn }} </h4>
+      <p>{{book.overview}}</p>
+        <a href="{% url 'view_books' %}" class="button" style="padding: 5px;margin: 5px;">Back to Books</a>
+        <a href="{% url 'book_edit' book.id %}" class="button" style="padding: 5px;margin: 5px;">Edit</a>
+
+        <a href="{% url 'book_delete' book.id %}" class="button" style="padding: 5px;margin: 5px;">Delete</a>
+    </div>
+</div>
+{% endblock %}

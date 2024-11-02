@@ -1,0 +1,12 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Book Delete {% endblock %}
+{% block content %}
+<h3 style="color: red;" class="button">Delete Book</h3>
+<form method="post">
+    {% csrf_token %}
+    <p> Do you want to delete this post ? </p>
+<input type="submit" value="Delet" style="background-color: darkred;">
+</form>
+<a href="{% url 'books.index' %}" class="button">cancel</a>
+
+{% endblock %}

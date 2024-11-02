@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Book Library{% endblock %}
+
+{% block content %}
+<h3 style="text-align: center;">Welcome to Book Library</h3>
+
+<ul style="text-align: center; list-style: none;">
+   <li>
+       <a href="{% url 'view_books' %}" class="button" style="margin: 10px;">All Books</a>
+       <a href="{% url 'create_book' %}" class="button" style="margin: 10px;">New Book</a>
+   </li>
+   <li><a href="{% url 'borrowed_books' %}" class="button" style="margin: 10px;">Borrowed Books</a>
+    <a href="{% url 'student_dashboard' %}" class="button" style="margin: 10px;">S Books</a>
+   </li>
+   <li>
+       <a href="{% url 'get_all_users' %}" class="button" style="margin: 10px;">All Students</a>
+         <a href="{% url 'find_student' %}" class="button" style="margin: 10px;">Search Student</a>
+   </li>
+   <li>
+       {% if user.is_authenticated %}
+       <form  method="post"  action="{% url 'logout' %}" style="display: inline-block;">
+        {% csrf_token %}
+        <a href="{% url 'logout' %}" class="button" style="margin: 10px; width: 270px;">Logout</a>
+
+        </form>
+       {% else %}
+           <a href="{% url 'login' %}" class="button" style="margin: 10px; width: 270px;">Login</a>
+       {% endif %}
+   </li>
+</ul>
+{% endblock %}

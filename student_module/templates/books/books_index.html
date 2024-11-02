@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Books{% endblock %}
+
+{% block content %}
+
+{% for book in books%}
+<div class="card"  >
+    <div >
+      <h3>Title:     {{book.title}}</h3>
+      <h4>Author: {{ book.author }}</h4>
+      <!-- <h4>Available: {{ book.available }}</h4>
+      <h4>Total Copies:  {{ book.total }} </h4> -->
+        <a href="{% url 'borrow_book' book.id %}" class="button" style="padding: 5px;margin: 5px;">Borrow</a>
+        <a href="{% url 'book_details' book.id %}" class="button" style="padding: 5px;margin: 5px;">Details</a>
+        <a href="{% url 'book_edit' book.id %}" class="button" style="padding: 5px;margin: 5px;">Edit</a>
+        <a href="{% url 'book_delete' book.id %}" class="button" style="padding: 5px;margin: 5px;">Delete</a>
+    </div>
+  </div>
+
+
+{% endfor %}
+
+{% endblock %}

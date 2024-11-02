@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+    {% if not request.user.is_authenticated %}
+        <h2 style="color:#32348f; text-align: center;">Signup for a New Account</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="button" style="height: auto;">Signup</button>
+            </div>
+        </form>
+        <p style="text-align: center;">Already have an account?
+            <a href="{% url 'login' %}" class="button" style="margin-left: 10px;">Login here</a>
+        </p>
+    {% else %}
+        <h2 style="color:#32348f; text-align: center;">You are already logged in</h2>
+        <a href="{% url 'student_dashboard' %}" class="button" style="margin-left: 20px;">Dashboard</a>
+    {% endif %}
+{% endblock %}

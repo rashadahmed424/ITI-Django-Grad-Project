@@ -1,0 +1,8 @@
+<h1>Admin Dashboard</h1>
+<h2>Borrowed Books</h2>
+<ul>
+  {% for borrowed_book in borrowed_books %}
+    <li>{{ borrowed_book.book.title }} - Borrowed by {{ borrowed_book.student.username }}</li>
+  {% endfor %}
+</ul>
+<!-- Add sections for managing books and users -->
